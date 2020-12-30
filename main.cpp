@@ -5,25 +5,30 @@ int main() {
   std::vector<int> vec;
   int userNumber = 0;
 
-  while (userNumber != -1){
+  while (true){
     std::cout << "Введите значение: ";
     std::cin >> userNumber;
     vec.push_back(userNumber);
+
+    if(userNumber == -1){
+      vec.pop_back();
+    
+      if (vec.size() > 20){
+        vec.erase(vec.begin(), vec.begin() + (vec.size()-20));
+      }
+      if (vec.size() == 0){
+        std::cout << "Вектор пуст\n";
+      }
+      else{
+        for (int i = 0; i < vec.size(); ++i){
+          std::cout << vec[i] << " ";
+        }
+      }
+    }
+
   }
 
-  vec.pop_back();
   
-  if (vec.size() > 20){
-    vec.erase(vec.begin(), vec.begin() + (vec.size()-20));
-  }
-  if (vec.size() == 0){
-    std::cout << "Вектор пуст\n";
-  }
-  else{
-    for (int i = 0; i < vec.size(); ++i){
-      std::cout << vec[i] << " ";
-    }
-  }
 }
 
 /*
