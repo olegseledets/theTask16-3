@@ -8,14 +8,17 @@ int main() {
   while (true){
     std::cout << "Введите значение: ";
     std::cin >> userNumber;
-    vec.push_back(userNumber);
+    if (vec.size() < 20){
+      vec.push_back(userNumber);
+    }
+    else{
+      vec.erase(vec.begin() + 1);
+      vec.push_back(userNumber);
+    }
 
     if(userNumber == -1){
       vec.pop_back();
-    
-      if (vec.size() > 20){
-        vec.erase(vec.begin(), vec.begin() + (vec.size()-20));
-      }
+  
       if (vec.size() == 0){
         std::cout << "Вектор пуст\n";
       }
@@ -23,13 +26,11 @@ int main() {
         for (int i = 0; i < vec.size(); ++i){
           std::cout << vec[i] << " ";
         }
-        std::cout << std::endl;
       }
+      std::cout << std::endl;
     }
 
   }
-
-  
 }
 
 /*
